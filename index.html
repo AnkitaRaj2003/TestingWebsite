@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>MarkItUp</title>
   <style>
     body{
       box-sizing: border-box;
@@ -23,6 +23,7 @@
 #upcoming-events{
   display: grid;
   grid-template-columns: repeat(4,1fr);
+  grid-column-gap: 1rem;
 }
 .upcoming-event{
   box-sizing: border-box;
@@ -75,6 +76,7 @@
 @media (max-width:900px){
   #upcoming-events{
     grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 0;
   }
   .event-content{
     padding: 8px 6px;
