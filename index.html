@@ -1,742 +1,304 @@
-<!DOCTYPE html>
+<?php 
+if(isset($_POST['submit'])){
+    $to = "lenovolaptopmeena@gmail.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $name = $_POST['name'];
+    $number = $_POST['number'];
+    $message = $_POST['message'];
+    $subject = "Query";
+    // $subject2 = "Copy of your form submission";
+    $message = "Name: " . $first_name ."\n Number: ". $number." wrote the following:" . "\n\n" . $message;
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    if (mail($to, $subject, $message, $headers)) {
+      echo "<script>alert('Mail Sent');</script>";
+    }
+    else {
+      echo "<script>alert('Failed');</script>";
+    }
+  }
+?>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fetronix India - Automation Ahead</title>
-    <!-- Client section files -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-    <!-- Client section file ends -->
 
-    <!-- Bootstrap CSS file -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
 
-    <!-- Bootstrap icons file -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <!-- Open sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Montserrat font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      /* font-family: 'Arimo', sans-serif; */
+    }
 
-    <style>
-      *{
-        font-family: 'Open Sans', sans-serif;
-      }
-      h5{
-        font-weight:bold;
-      }
-      .logo img{
-        height: 55px;
-      }
-      .card img{
-        width: 50%;
-        height: auto;
-      }
-      .card{
-        flex-direction: row !important;
-        width: 100%;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        justify-content: center;
-        align-items: center;
-      }
-      @media (max-width:766px){
-        .carousel {
-          margin-top: 8%;
-        }
-        .logo img{
-          height: 40px;
-        }
-        .card img{
-          width: 100%;
-        }
-        .card{
-          flex-direction: column !important;
-        }
-      }
+    .left-form {
+      background: #034c7f;
+      color: white;
+      padding: 2rem !important;
+    }
 
-        /* Client section CSS code starts */
-        h2{
-  text-align:center;
-  padding: 1rem 0rem;
-  font-weight: bold;
-}
-/* Slider */
+    .right-form {
+      background: #f35053;
+      color: white;
+      padding: 2rem !important;
+    }
 
-.slick-slide {
-    margin: 0px 20px;
-}
+    .form-control {
+      background: transparent !important;
+      border: 0 !important;
+      border-bottom: 1px solid #ccc !important;
+    }
 
-.slick-slide img {
-    width: 100%;
-}
+    #form-submit {
+      background: #f35053;
+      color: white;
+    }
 
-.slick-slider
-{
-    position: relative;
-    display: block;
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-            user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-        touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
-}
+    p {
+      font-size: 1.1rem;
+    }
 
-.slick-list
-{
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-.slick-list:focus
-{
-    outline: none;
-}
-.slick-list.dragging
-{
-    cursor: pointer;
-    cursor: hand;
-}
+    h2 {
+      /* font-family: 'Arimo', sans-serif !important; */
+      font-weight: bold;
+    }
 
-.slick-slider .slick-track,
-.slick-slider .slick-list
-{
-    -webkit-transform: translate3d(0, 0, 0);
-       -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-         -o-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-}
+    /* ----Code for changing color of placeholder------ */
+    ::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: #c6c6c6 !important;
+    }
 
-.slick-track
-{
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-}
-.slick-track:before,
-.slick-track:after
-{
-    display: table;
-    content: '';
-}
-.slick-track:after
-{
-    clear: both;
-}
-.slick-loading .slick-track
-{
-    visibility: hidden;
-}
+    :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #c6c6c6 !important;
+      opacity: 1;
+    }
 
-.slick-slide
-{
-    display: none;
-    float: left;
-    height: 100%;
-    min-height: 1px;
-}
-[dir='rtl'] .slick-slide
-{
-    float: right;
-}
-.slick-slide img
-{
-    display: block;
-}
-.slick-slide.slick-loading img
-{
-    display: none;
-}
-.slick-slide.dragging img
-{
-    pointer-events: none;
-}
-.slick-initialized .slick-slide
-{
-    display: block;
-}
-.slick-loading .slick-slide
-{
-    visibility: hidden;
-}
-.slick-vertical .slick-slide
-{
-    display: block;
-    height: auto;
-    border: 1px solid transparent;
-}
-.slick-arrow.slick-hidden {
-    display: none;
-}
-        /* Client section CSS code ends */
-    </style>
-  </head>
-  <body>
-    <!-- NavBar Code Starts -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="logo">
-          <img src="FETRONIX.jpg" alt="logo" />
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav px-2 me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><b>Home</b></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Blogs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contactus.php">Contact Us</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <!-- NavBar Code Ends -->
+    ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #c6c6c6 !important;
+      opacity: 1;
+    }
 
-    <!-- Slider Code Starts -->
-    <div id="carouselExampleCaptions" class="carousel slide">
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="3"
-          aria-label="Slide 4"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="4"
-          aria-label="Slide 5"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="5"
-          aria-label="Slide 6"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="Special-Purpose-Machines.jpg"
-            class="d-block w-100"
-            alt="IMG"
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Specified/Single Purpose Machines (SPM)</h5>
-            <p>SPM's are automatic machines designed for specific task.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="Conveyor.jpg" class="d-block w-100" alt="IMG" />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Conveyor Systems</h5>
-            <p>Conveyor Systems are automatically tranporting machines.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="Paint-Booth.jpg" class="d-block w-100" alt="IMG" />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Paint Booths</h5>
-            <p>
-              Paint Booths are fully automatic,safe and clean painting
-              enclosures.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="Industrial-Oven.jpg" class="d-block w-100" alt="IMG" />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Industrial Curing Ovens</h5>
-            <p>Ovens are automatic thermal processing equipment.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="Painting-Plant.jpg" class="d-block w-100" alt="IMG" />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Painting/Coating Plants</h5>
-            <p>
-              Coating Plants are well euqipped with automatic coating line and
-              pre treatment line.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="Industrial-Fabrication.jpg"
-            class="d-block w-100"
-            alt="IMG"
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Industrial Fabrication</h5>
-            <p>
-              Industrial fabrication is an art of building machines from raw
-              metal materials.
-            </p>
-          </div>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <!-- Slider Code Ends -->
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #c6c6c6 !important;
+    }
 
-    <!-- Card Code Starts -->
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #c6c6c6 !important;
+    }
+
+    ::placeholder {
+      /* Most modern browsers support this now. */
+      color: #c6c6c6 !important;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 0;
+    }
+
+    label {
+      font-size: 1.5rem;
+    }
+
+    /* ------Code for changing input field colors------ */
+    input:focus {
+      background: transparent !important;
+    }
+
+    input,
+    textarea {
+      color: white !important;
+    }
+
+    /* Contact us heading */
+    .contact-us-head {
+      color: white;
+      font-weight: bold;
+      background: #034c7f;
+      margin: 1rem 0;
+    }
+
+    .section-title {
+      border-left: 10px solid #f35053;
+      padding-left: 5px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .validationMessage {
+      color: white;
+      display: block;
+      font-weight: bold;
+      padding-left: 2rem;
+    }
+
+    /* For scroller */
+    body::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    body::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
+  </style>
+</head>
+
+<body>
+  <?php include './navbar.php' ?>
+
+  <!-- Contact Us Section -->
+  <section class="Material-contact-section section-padding section-dark" style="margin: 7rem 0 5rem 0 !important;">
     <div class="container">
-      <div class="company my-4">
-        <div class="company-name">
-          <h2 class="text-left">FETRONIX INDIA PRIVATE LIMITED</h2>
-          <p>Here we believes in delivering experience not just products...</p>
-        </div>
-        <div class="company-text" style="text-align: justify">
-          <p>
-            At FETRONIX INDIA, we design, manufacture and then deliver a
-            product as a state-of-the-art. We have ample range of products to
-            choose and customized from. We always try to deliver our best as in
-            service or in product. We have various products like Conveyors
-            Systems, Specified Purpose Machines, Painting/Coating Plants,
-            Industrial Ovens, Paint Booths, etc. and other Industrial
-            fabrications. For any enquiry related to mentioned products feel
-            free to contact us at 'corporate@fetronix.com' or call us at
-            +91-9858078767,8770834195,9999823110.
-          </p>
+      <div class="row">
+        <!-- Section Titile -->
+        <div class="col-md-12 contact-us-head">
+          <h1 class="section-title my-4">Contact Us</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col my-3">
-            <div class="card">
-                <img src="Special-Purpose-Machines.jpg" class="card-img-top" alt="IMG"/>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        SPM (SPECIFIED / SINGLE PURPOSE MACHINE)
-                    </h5>
-                    <p class="card-text" style="text-align: justify;">
-                        It is designed to process single or specific task. A fully
-                        automatic control system to perform the repeatability with
-                        efficiency.
-                    </p>
-                    <a href="#" class="btn btn-primary">Learn More...</a>
-                </div>
+        <!-- contact form -->
+        <div class="col-md-6 left-form">
+          <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
+            <!-- Name -->
+            <div class="form-group">
+              <label class="control-label" for="name">
+                <i class="bi bi-person-circle"></i>
+              </label>
+              <input pattern="[A-Za-z\s]+" placeholder="Enter your name" class="form-control" id="name" type="text" name="name" required data-error="Please enter your name">
+              <div class="help-block with-errors"></div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        
-        <div class="col my-3">
-            <div class="card">
-                <img src="Conveyor.jpg" class="card-img-top" alt="IMG" />
-                <div class="card-body">
-                <h5 class="card-title">CONVEYOR SYSTEM</h5>
-                <p class="card-text" style="text-align: justify;">
-                    It is a material handling system used to transport the product
-                    from one place to another. We have various types of conveyors to
-                    ease the process of transportation.
-                </p>
-                <a href="#" class="btn btn-primary">Learn more...</a>
+            <!-- email -->
+            <div class="form-group label-floating">
+              <label class="control-label" for="email">
+                <i class="bi bi-envelope-fill"></i>
+              </label>
+              <input class="form-control" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" oninput="validateEmail()" id="email" type="email" name="email" required placeholder="Please enter your Email">
+              <div class="help-block with-errors"></div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col my-3">
-        <div class="card">
-            <img
-            src="Industrial-Oven.jpg"
-            class="card-img-top"
-            alt="IMG"
-            />
-            <div class="card-body">
-                <h5 class="card-title">CURING OVEN</h5>
-                <p class="card-text" style="text-align: justify;">
-                    Industrial curing oven is generally used to caryy out the
-                    thermal heating process. Through this process the product can
-                    become more durable.
-                </p>
-                <a href="#" class="btn btn-primary">Learn more...</a>
+            <span id="emailValidationMessage" class="validationMessage"></span>
+            <!-- Subject -->
+            <div class="form-group label-floating">
+              <label class="control-label" for="msg_number">
+                <i class="bi bi-telephone-fill"></i>
+              </label>
+              <input class="form-control" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" id="msg_number" oninput="validatePhone()" type="number" name="number" required placeholder="Please enter your phone number">
+              <div class="help-block with-errors"></div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col my-3">
-        <div class="card">
-            <img src="Painting-Plant.jpg" class="card-img-top" alt="IMG" />
-            <div class="card-body">
-                <h5 class="card-title">PAINTING / COATING PLANT</h5>
-                <p class="card-text" style="text-align: justify;">
-                    It is consistes of pre-treatment line,coating line,curing oven
-                    and cooling zone. It is very efficient for bulk painting of the
-                    products.
-                </p>
-                <a href="#" class="btn btn-primary">Learn more...</a>
+            <span id="phoneValidationMessage" class="validationMessage"></span>
+            <!-- Message -->
+            <div class="form-group label-floating">
+              <label for="message" class="control-label">
+                <i class="bi bi-pencil-square"></i>
+              </label>
+              <textarea class="form-control" rows="3" id="message" maxlength="255" name="message" required placeholder="Write your message"></textarea>
+              <div class="help-block with-errors"></div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    
-    <div class="col my-3">
-        <div class="card">
-            <img src="Paint-Booth.jpg" class="card-img-top" alt="IMG" />
-            <div class="card-body">
-                <h5 class="card-title">PAINT BOOTHS</h5>
-                <p class="card-text" style="text-align: justify;">
-                    Paint booths will provide the safe,clean and fully/semi
-                    automatic enclosure to carry out paint process in a controlled
-                    and proper manner.
-                </p>
-                <a href="#" class="btn btn-primary">Learn more...</a>
+            <!-- Form Submit -->
+            <div class="form-submit mt-5">
+              <input class="btn btn-common" name="submit" type="submit" id="form-submit" value="Send Enquiry"/>
+              <div id="msgSubmit" class="h3 text-center hidden"></div>
+              <div class="clearfix"></div>
             </div>
+          </form>
         </div>
-    </div>
-</div>
-<div class="row">
-    
-    <div class="col my-3">
-        <div class="card">
-            <img
-            src="Industrial-Fabrication.jpg"
-            class="card-img-top"
-            alt="IMG"
-            />
-            <div class="card-body">
-                <h5 class="card-title">INDUSTRIAL FABRICATION</h5>
-                <p class="card-text" style="text-align: justify;">
-                    We are very much capable to realise any kind of metal
-                    fabrication. We efficently shape the raw material of mettals
-                    into the reality to ease the various industrial operations.
-                </p>
-                <a href="#" class="btn btn-primary">Learn more...</a>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-    </div>
-    <!-- Card Code Ends -->
-    <!-- Client section starts -->
-    <div class="container my-5">
-      <h2>Our  Partners/Clients</h2>
-       <section class="customer-logos slider ">
-          <div class="slide"><img src="1.png"></div>
-          <div class="slide"><img src="2.png"></div>
-          <div class="slide"><img src="3.png"></div>
-          <div class="slide"><img src="4.png"></div>
-          <div class="slide"><img src="5.png"></div>
-          <div class="slide"><img src="6.png"></div>
-          <div class="slide"><img src="7.png"></div>
-          <div class="slide"><img src="8.png"></div>
-          <div class="slide"><img src="9.png"></div>
-          <div class="slide"><img src="10.png"></div>
-          <div class="slide"><img src="11.png"></div>
-          <div class="slide"><img src="12.png"></div>
-          <div class="slide"><img src="14.png"></div>
-          <div class="slide"><img src="15.png"></div>
-          <div class="slide"><img src="16.png"></div>
-          <div class="slide"><img src="17.png"></div>
-          <div class="slide"><img src="18.png"></div>
-          <div class="slide"><img src="19.png"></div>
-          <div class="slide"><img src="800px-Wow!_momo_logo.jpg"></div>
-       </section>
-    </div>
-    <!-- Client section ends -->
+        <!-- Section Titile -->
+        <div class="col-md-6 mt-3 right-form" data-wow-delay=".2s">
+          <h2 class="fw-bold">Drop in our office</h2>
+          <p><i class="bi bi-house-door-fill"></i> <b>Address:</b> Lane No.2, Gali No.7, Plot No.179, Fetronix, Kadipur Industrail Area, Gurugram, Haryana, 12201</p>
+          <p>
+            <i class="bi bi-envelope-fill"></i>
+            <b>Email:</b> corporate@fetronix.com, sales@fetronix.com
+          </p>
+          <p><i class="bi bi-telephone-fill"></i> <b>Phone:</b> + 91 9858078767, + 91 8770834195</p>
+          <!-- <p><i class="bi bi-telephone-fill"></i> <b>Phone 2:</b> + 91 8770834195</p> -->
 
-    <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
-  <!-- Section: Links  -->
-  <section class="pt-2">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
-          </h6>
-          <p>
-            This is my website. This is my website. This is my website. This is my website. This is my website. This is my website.
-          </p>
-        </div>
-        <!-- Grid column -->
+          <!-- Map Code -->
+          <div style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:500px;height:100px;">
+            <div id="embed-map-canvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Lane+No.2,+Gali+No.7,+Plot+No.179,+Fetronix,+Kadipur+Industrail+Area,+Gurugram,+Haryana,+12201&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="our-googlemap-code" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a>
+            <style>
+              #embed-map-canvas img {
+                max-height: none;
+                max-width: none !important;
+                background: none !important;
+              }
+            </style>
+          </div>
 
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Site Links
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Home</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">About</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Products</a>
-          </p>
-          <p>
-              <a href="#!" class="text-reset">Gallery</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Services</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Contact Us</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Blogs</a>
-          </p>
-        </div>
-        <!-- Grid column -->
+          <p><i class="bi bi-chat-dots-fill"></i> <b>Social Media: </b></p>
+          <div class="d-flex justify-content-around align-items-center">
+            <!-- Facebook -->
+            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://www.facebook.com/fetronix"><i class="bi bi-facebook"></i></a>
 
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Transmission and assembly conveyors</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Batch ovens and converyor oven</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Fluidized bed incinerator</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Paint booth</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Liquid coating/powder coating plant</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">SPM(Special purpose machines)</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Automation solution</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Chemical/bio fuel plant setup</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Washing line and PT line</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Paint and powder coating booth</a>
-          </p>
-        </div>
-        <!-- Grid column -->
+            <!-- Instagram -->
+            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://instagram.com/fetronixautomation?igshid=NTc4MTIwNjQ2YQ=="><i class="bi bi-instagram"></i></a>
+            <!-- Linkedin -->
+            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://in.linkedin.com/in/fetronix-india-24b8b6274"><i class="bi bi-linkedin"></i></a>
 
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="bi bi-house-door-fill"></i> LANE NO 2, GALI NO 7,PLOT NO 179, FETRONIX,KHADIPUR INDUSTRIAL AREA, GURUGRAM, HARYANA, 122001</p>
-          <p>
-            <i class="bi bi-envelope-fill"></i> info@example.com
-          </p>
-          <p><i class="bi bi-telephone-fill"></i> + 91 9858078767</p>
-          <p><i class="bi bi-telephone-fill"></i> + 91 8770834195</p>
-        <!-- Grid column -->
+            <!-- Instagram -->
+            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://www.youtube.com/@fetronix"><i class="bi bi-youtube"></i>
+            </a>
+          </div>
+        </div>
       </div>
-      <!-- Grid row -->
     </div>
   </section>
-  <!-- Section: Links  -->
-  <hr class="m-0">
-  <!-- Copyright -->
-<!-- Section: Copyright -->
-<section class="px-3 pt-0">
-  <div class="row d-flex align-items-center">
-    <!-- Grid column -->
-    <div class="col-md-7 col-lg-8 text-center text-md-start">
-      <!-- Copyright -->
-      <div class="px-3 py-2">
-        © 2020 Copyright:
-        <a class="text-dark" href="https://fetronix.com/"
-           >Fetronix.com</a
-          >
-      </div>
-      <!-- Copyright -->
-    </div>
-    <!-- Grid column -->
 
-    <!-- Grid column -->
-    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-      <!-- Facebook -->
-      <a
-         class="btn btn-outline-light btn-floating m-1"
-         class="text-white"
-         role="button"
-         style="font-size: 1.3rem;"
-         ><i class="bi bi-facebook"></i
-        ></a>
-
-      <!-- Twitter -->
-      <a
-         class="btn btn-outline-light btn-floating m-1"
-         class="text-white"
-         role="button"
-         style="font-size: 1.3rem;"
-         ><i class="bi bi-twitter"></i
-        ></a>
-
-      <!-- Google -->
-      <a
-         class="btn btn-outline-light btn-floating m-1"
-         class="text-white"
-         role="button"
-         style="font-size: 1.3rem;"
-         ><i class="bi bi-google"></i
-        ></a>
-
-      <!-- Instagram -->
-      <a
-         class="btn btn-outline-light btn-floating m-1"
-         class="text-white"
-         role="button"
-         style="font-size: 1.3rem;"
-         ><i class="bi bi-instagram"></i
-        ></a>
-
-      <!-- Instagram -->
-      <a
-         class="btn btn-outline-light btn-floating m-1"
-         class="text-white"
-         role="button"
-         style="font-size: 1.3rem;"
-         ><i class="bi bi-linkedin"></i
-        ></a>
-    </div>
-    <!-- Grid column -->
-  </div>
-</section>
-<!-- Section: Copyright -->
-  <!-- Copyright -->
-</footer>
-
-  <!-- client section JS code starts -->
+  <?php include './footer.php' ?>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
   <script>
+    //Email Validation
+    function validateEmail() {
+      var emailInput = document.getElementById("email");
+      var emailValidationMessage = document.getElementById("emailValidationMessage");
+      var submitButton = document.getElementById("form-submit");
+      var email = emailInput.value.trim().toLowerCase();
 
-    $(document).ready(function(){
-      $('.customer-logos').slick({
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 500,
-        arrows: false,
-        dots: false,
-        pauseOnHover: false,
-        responsive: [{
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 4
-          }
-        }, {
-          breakpoint: 520,
-          settings: {
-            slidesToShow: 3
-          }
-        }]
-      });
-    });
-    </script>
-  <!-- client section JS code ends -->
-    <!-- Bootstrap JS file -->
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com") || email.endsWith("@outlook.com")) {
+        emailValidationMessage.textContent = "";
+        emailInput.classList.remove("invalid");
+        submitButton.disabled = false;
+      } else {
+        emailValidationMessage.textContent = "Please enter a valid email address";
+        emailInput.classList.add("invalid");
+        submitButton.disabled = true;
+      }
+    }
+
+    //Phone validation
+    function validatePhone() {
+      var phoneInput = document.getElementById("msg_number");
+      var phoneValidationMessage = document.getElementById("phoneValidationMessage");
+      var submitButton = document.getElementById("form-submit");
+      var phone = phoneInput.value;
+      var phoneRegex = /^[5-9]\d{9}$/;
+      if (phoneRegex.test(phone)) {
+        phoneValidationMessage.textContent = "";
+        phoneInput.classList.remove("invalid");
+        submitButton.disabled = false;
+      } else {
+        phoneValidationMessage.textContent = "Please enter a valid Phone number";
+        phoneInput.classList.add("invalid");
+        submitButton.disabled = true;
+      }
+    }
+  </script>
+</body>
+
 </html>
