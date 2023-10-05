@@ -1,304 +1,880 @@
-<?php 
-if(isset($_POST['submit'])){
-    $to = "lenovolaptopmeena@gmail.com"; // this is your Email address
-    $from = $_POST['email']; // this is the sender's Email address
-    $name = $_POST['name'];
-    $number = $_POST['number'];
-    $message = $_POST['message'];
-    $subject = "Query";
-    // $subject2 = "Copy of your form submission";
-    $message = "Name: " . $first_name ."\n Number: ". $number." wrote the following:" . "\n\n" . $message;
-
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    if (mail($to, $subject, $message, $headers)) {
-      echo "<script>alert('Mail Sent');</script>";
-    }
-    else {
-      echo "<script>alert('Failed');</script>";
-    }
-  }
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add Your Property | Navkar Solutions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-  <!-- Montserrat font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      font-family: 'Poppins', sans-serif;
-      /* font-family: 'Arimo', sans-serif; */
-    }
+        * {
+            padding: 0;
+            margin: 0;
+        }
 
-    .left-form {
-      background: #034c7f;
-      color: white;
-      padding: 2rem !important;
-    }
+        .container1 {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee;
+        }
 
-    .right-form {
-      background: #f35053;
-      color: white;
-      padding: 2rem !important;
-    }
+        .container1 .card {
+            height: 600px;
+            width: 1000px;
+            background-color: transparent;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 20px;
+            margin-top: 4rem;
+        }
 
-    .form-control {
-      background: transparent !important;
-      border: 0 !important;
-      border-bottom: 1px solid #ccc !important;
-    }
+        .container1 .card .form {
+            width: 100%;
+            height: 100%;
 
-    #form-submit {
-      background: #f35053;
-      color: white;
-    }
+            display: flex;
+        }
 
-    p {
-      font-size: 1.1rem;
-    }
+        .container1 .card .left-side {
+            width: 35%;
+            background-color: #304767;
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding: 20px 30px;
+            box-sizing: border-box;
 
-    h2 {
-      /* font-family: 'Arimo', sans-serif !important; */
-      font-weight: bold;
-    }
+        }
 
-    /* ----Code for changing color of placeholder------ */
-    ::-webkit-input-placeholder {
-      /* WebKit, Blink, Edge */
-      color: #c6c6c6 !important;
-    }
+        /*left-side-start*/
+        .left-heading {
+            color: #fff;
 
-    :-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: #c6c6c6 !important;
-      opacity: 1;
-    }
+        }
 
-    ::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: #c6c6c6 !important;
-      opacity: 1;
-    }
+        .steps-content {
+            margin-top: 30px;
+            color: #fff;
+        }
 
-    :-ms-input-placeholder {
-      /* Internet Explorer 10-11 */
-      color: #c6c6c6 !important;
-    }
+        .steps-content p {
+            font-size: 12px;
+            margin-top: 15px;
+        }
 
-    ::-ms-input-placeholder {
-      /* Microsoft Edge */
-      color: #c6c6c6 !important;
-    }
+        .progress-bar {
+            background-color: #304767;
+            list-style: none;
+            /*color:#fff;*/
+            margin-top: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            counter-reset: container1 0;
+        }
 
-    ::placeholder {
-      /* Most modern browsers support this now. */
-      color: #c6c6c6 !important;
-    }
+        .progress-bar li {
+            position: relative;
+            margin-left: 40px;
+            margin-top: 40px;
+            counter-increment: container1 1;
+            color: #4f6581;
+        }
 
-    .form-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 0;
-    }
+        .progress-bar li::before {
+            content: counter(container1);
+            line-height: 25px;
+            text-align: center;
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            border: 1px solid #4f6581;
+            border-radius: 50%;
+            left: -40px;
+            top: -5px;
+            z-index: 10;
+            background-color: #304767;
 
-    label {
-      font-size: 1.5rem;
-    }
 
-    /* ------Code for changing input field colors------ */
-    input:focus {
-      background: transparent !important;
-    }
+        }
 
-    input,
-    textarea {
-      color: white !important;
-    }
 
-    /* Contact us heading */
-    .contact-us-head {
-      color: white;
-      font-weight: bold;
-      background: #034c7f;
-      margin: 1rem 0;
-    }
+        .progress-bar li::after {
+            content: '';
+            position: absolute;
+            height: 90px;
+            width: 2px;
+            background-color: #4f6581;
+            z-index: 1;
+            left: -27px;
+            top: -70px;
+        }
 
-    .section-title {
-      border-left: 10px solid #f35053;
-      padding-left: 5px;
-      font-family: 'Montserrat', sans-serif;
-    }
 
-    .validationMessage {
-      color: white;
-      display: block;
-      font-weight: bold;
-      padding-left: 2rem;
-    }
+        .progress-bar li.active::after {
+            background-color: #fff;
 
-    /* For scroller */
-    body::-webkit-scrollbar {
-      width: 5px;
-    }
+        }
 
-    body::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    }
+        .progress-bar li:first-child:after {
+            display: none;
+        }
 
-    body::-webkit-scrollbar-thumb {
-      background-color: darkgrey;
-      outline: 1px solid slategrey;
-    }
-  </style>
+        /*.progress-bar li:last-child:after{*/
+        /*  display:none;  */
+        /*}*/
+        .progress-bar li.active::before {
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .progress-bar li.active {
+            color: #fff;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        /*left-side-end*/
+        .container1 .card .right-side {
+            width: 80%;
+            background-color: #fff;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        /*right-side-start*/
+        .main {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .main {
+            padding: 40px;
+        }
+
+        .main small {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2px;
+            height: 30px;
+            width: 30px;
+            background-color: #ccc;
+            border-radius: 50%;
+            color: yellow;
+            font-size: 19px;
+        }
+
+        .text {
+            margin-top: 20px;
+        }
+
+        .congrats {
+            text-align: center;
+        }
+
+        .text p {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #cbced4;
+        }
+
+        .input-text {
+            margin: 30px 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .input-text .input-div {
+            width: 100%;
+            position: relative;
+
+        }
+
+
+
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: 0;
+            border-radius: 5px;
+            border: 1px solid #cbced4;
+            gap: 20px;
+            box-sizing: border-box;
+            padding: 0px 10px;
+        }
+
+        select {
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: 0;
+            border-radius: 5px;
+            border: 1px solid #cbced4;
+            gap: 20px;
+            box-sizing: border-box;
+            padding: 0px 10px;
+        }
+
+        .input-text .input-div span {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            transition: all 0.5s;
+        }
+
+        .input-div input:focus~span,
+        .input-div input:valid~span {
+            top: -15px;
+            left: 6px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .input-div span {
+            top: -15px;
+            left: 6px;
+            font-size: 10px;
+        }
+
+        .buttons button {
+            height: 40px;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0075ff;
+            font-size: 12px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .button_space {
+            display: flex;
+            gap: 20px;
+
+        }
+
+        .button_space button:nth-child(1) {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid#000;
+        }
+
+        .user_card {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            height: 200px;
+            width: 100%;
+            border: 1px solid #c7d3d9;
+            border-radius: 10px;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .user_card span {
+            height: 80px;
+            width: 100%;
+            background-color: #dfeeff;
+        }
+
+        .circle {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+        }
+
+        .circle span {
+            height: 70px;
+            width: 70px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+        .circle span img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .social {
+            display: flex;
+            position: absolute;
+            top: 100px;
+            right: 10px;
+        }
+
+        .social span {
+            height: 30px;
+            width: 30px;
+            border-radius: 7px;
+            background-color: #fff;
+            border: 1px solid #cbd6dc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            color: #cbd6dc;
+
+        }
+
+        .social span i {
+            cursor: pointer;
+        }
+
+        .heart {
+            color: red !important;
+        }
+
+        .share {
+            color: red !important;
+        }
+
+        .user_name {
+            position: absolute;
+            top: 110px;
+            margin: 10px;
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+        }
+
+        .user_name h3 {
+            color: #4c5b68;
+        }
+
+        .detail {
+            /*margin-top:10px;*/
+            display: flex;
+            justify-content: space-between;
+            margin-right: 50px;
+        }
+
+        .detail p {
+            font-size: 12px;
+            font-weight: 700;
+
+        }
+
+        .detail p a {
+            text-decoration: none;
+            color: blue;
+        }
+
+
+
+
+
+
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #7ac142;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            margin: 10% auto;
+            box-shadow: inset 0px 0px 0px #7ac142;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes scale {
+
+            0%,
+            100% {
+                transform: none;
+            }
+
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0px 0px 0px 30px #7ac142;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        .warning {
+            border: 1px solid red !important;
+        }
+
+
+        /*right-side-end*/
+        @media (max-width:750px) {
+            .container1 {
+                height: scroll;
+
+
+            }
+
+            .container1 .card {
+                max-width: 350px;
+                height: auto !important;
+                margin: 30px 0;
+            }
+
+            .container1 .card .right-side {
+                width: 100%;
+
+            }
+
+            .input-text {
+                display: block;
+            }
+
+            .input-text .input-div {
+                margin-top: 20px;
+
+            }
+
+            .container1 .card .left-side {
+
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <?php include './navbar.php' ?>
+    <?php include 'header.php' ?>
+    <div class="container1" style="background-image: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover;">
+        <div class="card">
+            <div class="form">
+                <div class="left-side">
+                    <div class="left-heading">
+                        <h3>indeed</h3>
+                    </div>
+                    <div class="steps-content">
+                        <h3>Step <span class="step-number">1</span></h3>
+                        <p class="step-number-content active">Enter your personal information to get closer to companies.</p>
+                        <p class="step-number-content d-none">Get to know better by adding your diploma,certificate and education life.</p>
+                        <p class="step-number-content d-none">Help companies get to know you better by telling then about your past experiences.</p>
+                        <p class="step-number-content d-none">Add your profile piccture and let companies find youy fast.</p>
+                    </div>
+                    <ul class="progress-bar">
+                        <li class="active">Personal Information</li>
+                        <li>Education</li>
+                        <li>Work Experience</li>
+                        <li>User Photo</li>
+                    </ul>
+                </div>
+                <div class="right-side">
+                    <div class="main active">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Your Personal Information</h2>
+                            <p>Enter your personal information to get closer to copanies.</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require id="user_name">
+                                <span>First Name</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>E-mail Address</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Phone number</span>
+                            </div>
+                            <div class="input-div">
+                                <select>
+                                    <option>Select City/Village</option>
+                                    <option>India</option>
+                                    <option>France</option>
+                                    <option>UK</option>
+                                    <option>USA</option>
+                                    <option>Germany</option>
+                                    <option>Russia</option>
+                                    <option>China</option>
+                                    <option>Japan</option>
+                                    <option>Pakistan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" readonly>
+                                <span>Pincode</span>
+                            </div>
+                            <div class="input-div">
+                                <select>
+                                    <option>Select Block</option>
+                                    <option>India</option>
+                                    <option>France</option>
+                                    <option>UK</option>
+                                    <option>USA</option>
+                                    <option>Germany</option>
+                                    <option>Russia</option>
+                                    <option>China</option>
+                                    <option>Japan</option>
+                                    <option>Pakistan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <select>
+                                    <option>Select Category</option>
+                                    <option>India</option>
+                                    <option>France</option>
+                                    <option>UK</option>
+                                    <option>USA</option>
+                                    <option>Germany</option>
+                                    <option>Russia</option>
+                                    <option>China</option>
+                                    <option>Japan</option>
+                                    <option>Pakistan</option>
+                                </select>
+                            </div>
+                            <div class="input-div">
+                                <select>
+                                    <option>Select District</option>
+                                    <option>New Delhi</option>
+                                    <option>Paris</option>
+                                    <option>London</option>
+                                    <option>Washington D.C.</option>
+                                    <option>Berlin</option>
+                                    <option>Moscow</option>
+                                    <option>Bejing</option>
+                                    <option>Tokyo</option>
+                                    <option>Islamabad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <select>
+                                    <option>Select Category</option>
+                                    <option>India</option>
+                                    <option>France</option>
+                                    <option>UK</option>
+                                    <option>USA</option>
+                                    <option>Germany</option>
+                                    <option>Russia</option>
+                                    <option>China</option>
+                                    <option>Japan</option>
+                                    <option>Pakistan</option>
+                                </select>
+                            </div>
+                            <div class="input-div">
+                                <select>
+                                    <option>Select District</option>
+                                    <option>New Delhi</option>
+                                    <option>Paris</option>
+                                    <option>London</option>
+                                    <option>Washington D.C.</option>
+                                    <option>Berlin</option>
+                                    <option>Moscow</option>
+                                    <option>Bejing</option>
+                                    <option>Tokyo</option>
+                                    <option>Islamabad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="next_button">Next Step</button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Education</h2>
+                            <p>Inform companies about your education life.</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>School Name</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Board Name</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>College/University name</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <select>
+                                    <option>Select Course</option>
+                                    <option>BCA</option>
+                                    <option>B-TECH</option>
+                                    <option>BA</option>
+                                    <option>B-COM</option>
+                                    <option>B-SC</option>
+                                    <option>MBA</option>
+                                    <option>MCA</option>
+                                    <option>M-COM</option>
+                                    <option>M-TECH</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button class="next_button">Next Step</button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Work Experiences</h2>
+                            <p>Can you talk about your past work experience?</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Experience 1</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Position</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Experience 2</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Position</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Experience 3</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Position</span>
+                            </div>
+                        </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button class="next_button">Next Step</button>
+                        </div>
+                    </div>
 
-  <!-- Contact Us Section -->
-  <section class="Material-contact-section section-padding section-dark" style="margin: 7rem 0 5rem 0 !important;">
-    <div class="container">
-      <div class="row">
-        <!-- Section Titile -->
-        <div class="col-md-12 contact-us-head">
-          <h1 class="section-title my-4">Contact Us</h1>
+
+
+                    <div class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>User Photo</h2>
+                            <p>Upload your profile picture and share yourself.</p>
+                        </div>
+                        <div class="user_card">
+                            <span></span>
+                            <div class="circle">
+                                <span><img src="https://i.imgur.com/hnwphgM.jpg"></span>
+
+                            </div>
+                            <div class="social">
+                                <span><i class="fa fa-share-alt"></i></span>
+                                <span><i class="fa fa-heart"></i></span>
+
+                            </div>
+                            <div class="user_name">
+                                <h3>Peter Hawkins</h3>
+                                <div class="detail">
+                                    <p><a href="#">Izmar,Turkey</a>Hiring</p>
+                                    <p>17 last day . 94Apply</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button class="submit_button">Submit</button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
+
+                        <div class="text congrats">
+                            <h2>Congratulations!</h2>
+                            <p>Thanks Mr./Mrs. <span class="shown_name"></span> your information have been submitted successfully for the future reference we will contact you soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <!-- contact form -->
-        <div class="col-md-6 left-form">
-          <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
-            <!-- Name -->
-            <div class="form-group">
-              <label class="control-label" for="name">
-                <i class="bi bi-person-circle"></i>
-              </label>
-              <input pattern="[A-Za-z\s]+" placeholder="Enter your name" class="form-control" id="name" type="text" name="name" required data-error="Please enter your name">
-              <div class="help-block with-errors"></div>
-            </div>
-            <!-- email -->
-            <div class="form-group label-floating">
-              <label class="control-label" for="email">
-                <i class="bi bi-envelope-fill"></i>
-              </label>
-              <input class="form-control" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" oninput="validateEmail()" id="email" type="email" name="email" required placeholder="Please enter your Email">
-              <div class="help-block with-errors"></div>
-            </div>
-            <span id="emailValidationMessage" class="validationMessage"></span>
-            <!-- Subject -->
-            <div class="form-group label-floating">
-              <label class="control-label" for="msg_number">
-                <i class="bi bi-telephone-fill"></i>
-              </label>
-              <input class="form-control" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" id="msg_number" oninput="validatePhone()" type="number" name="number" required placeholder="Please enter your phone number">
-              <div class="help-block with-errors"></div>
-            </div>
-            <span id="phoneValidationMessage" class="validationMessage"></span>
-            <!-- Message -->
-            <div class="form-group label-floating">
-              <label for="message" class="control-label">
-                <i class="bi bi-pencil-square"></i>
-              </label>
-              <textarea class="form-control" rows="3" id="message" maxlength="255" name="message" required placeholder="Write your message"></textarea>
-              <div class="help-block with-errors"></div>
-            </div>
-            <!-- Form Submit -->
-            <div class="form-submit mt-5">
-              <input class="btn btn-common" name="submit" type="submit" id="form-submit" value="Send Enquiry"/>
-              <div id="msgSubmit" class="h3 text-center hidden"></div>
-              <div class="clearfix"></div>
-            </div>
-          </form>
-        </div>
-        <!-- Section Titile -->
-        <div class="col-md-6 mt-3 right-form" data-wow-delay=".2s">
-          <h2 class="fw-bold">Drop in our office</h2>
-          <p><i class="bi bi-house-door-fill"></i> <b>Address:</b> Lane No.2, Gali No.7, Plot No.179, Fetronix, Kadipur Industrail Area, Gurugram, Haryana, 12201</p>
-          <p>
-            <i class="bi bi-envelope-fill"></i>
-            <b>Email:</b> corporate@fetronix.com, sales@fetronix.com
-          </p>
-          <p><i class="bi bi-telephone-fill"></i> <b>Phone:</b> + 91 9858078767, + 91 8770834195</p>
-          <!-- <p><i class="bi bi-telephone-fill"></i> <b>Phone 2:</b> + 91 8770834195</p> -->
-
-          <!-- Map Code -->
-          <div style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:500px;height:100px;">
-            <div id="embed-map-canvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Lane+No.2,+Gali+No.7,+Plot+No.179,+Fetronix,+Kadipur+Industrail+Area,+Gurugram,+Haryana,+12201&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="our-googlemap-code" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a>
-            <style>
-              #embed-map-canvas img {
-                max-height: none;
-                max-width: none !important;
-                background: none !important;
-              }
-            </style>
-          </div>
-
-          <p><i class="bi bi-chat-dots-fill"></i> <b>Social Media: </b></p>
-          <div class="d-flex justify-content-around align-items-center">
-            <!-- Facebook -->
-            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://www.facebook.com/fetronix"><i class="bi bi-facebook"></i></a>
-
-            <!-- Instagram -->
-            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://instagram.com/fetronixautomation?igshid=NTc4MTIwNjQ2YQ=="><i class="bi bi-instagram"></i></a>
-            <!-- Linkedin -->
-            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://in.linkedin.com/in/fetronix-india-24b8b6274"><i class="bi bi-linkedin"></i></a>
-
-            <!-- Instagram -->
-            <a class="m-2" style="font-size: 2rem; color: inherit;" href="https://www.youtube.com/@fetronix"><i class="bi bi-youtube"></i>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <?php include './footer.php' ?>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
-  <script>
-    //Email Validation
-    function validateEmail() {
-      var emailInput = document.getElementById("email");
-      var emailValidationMessage = document.getElementById("emailValidationMessage");
-      var submitButton = document.getElementById("form-submit");
-      var email = emailInput.value.trim().toLowerCase();
+    <script>
+        var next_click = document.querySelectorAll(".next_button");
+        var main_form = document.querySelectorAll(".main");
+        var step_list = document.querySelectorAll(".progress-bar li");
+        var num = document.querySelector(".step-number");
+        let formnumber = 0;
 
-      if (email.endsWith("@gmail.com") || email.endsWith("@hotmail.com") || email.endsWith("@outlook.com")) {
-        emailValidationMessage.textContent = "";
-        emailInput.classList.remove("invalid");
-        submitButton.disabled = false;
-      } else {
-        emailValidationMessage.textContent = "Please enter a valid email address";
-        emailInput.classList.add("invalid");
-        submitButton.disabled = true;
-      }
-    }
+        next_click.forEach(function(next_click_form) {
+            next_click_form.addEventListener('click', function() {
+                if (!validateform()) {
+                    return false
+                }
+                formnumber++;
+                updateform();
+                progress_forward();
+                contentchange();
+            });
+        });
 
-    //Phone validation
-    function validatePhone() {
-      var phoneInput = document.getElementById("msg_number");
-      var phoneValidationMessage = document.getElementById("phoneValidationMessage");
-      var submitButton = document.getElementById("form-submit");
-      var phone = phoneInput.value;
-      var phoneRegex = /^[5-9]\d{9}$/;
-      if (phoneRegex.test(phone)) {
-        phoneValidationMessage.textContent = "";
-        phoneInput.classList.remove("invalid");
-        submitButton.disabled = false;
-      } else {
-        phoneValidationMessage.textContent = "Please enter a valid Phone number";
-        phoneInput.classList.add("invalid");
-        submitButton.disabled = true;
-      }
-    }
-  </script>
+        var back_click = document.querySelectorAll(".back_button");
+        back_click.forEach(function(back_click_form) {
+            back_click_form.addEventListener('click', function() {
+                formnumber--;
+                updateform();
+                progress_backward();
+                contentchange();
+            });
+        });
+
+        var username = document.querySelector("#user_name");
+        var shownname = document.querySelector(".shown_name");
+
+
+        var submit_click = document.querySelectorAll(".submit_button");
+        submit_click.forEach(function(submit_click_form) {
+            submit_click_form.addEventListener('click', function() {
+                shownname.innerHTML = username.value;
+                formnumber++;
+                updateform();
+            });
+        });
+
+        var heart = document.querySelector(".fa-heart");
+        heart.addEventListener('click', function() {
+            heart.classList.toggle('heart');
+        });
+
+
+        var share = document.querySelector(".fa-share-alt");
+        share.addEventListener('click', function() {
+            share.classList.toggle('share');
+        });
+
+
+
+        function updateform() {
+            main_form.forEach(function(mainform_number) {
+                mainform_number.classList.remove('active');
+            })
+            main_form[formnumber].classList.add('active');
+        }
+
+        function progress_forward() {
+            // step_list.forEach(list => {
+
+            //     list.classList.remove('active');
+
+            // }); 
+
+
+            num.innerHTML = formnumber + 1;
+            step_list[formnumber].classList.add('active');
+        }
+
+        function progress_backward() {
+            var form_num = formnumber + 1;
+            step_list[form_num].classList.remove('active');
+            num.innerHTML = form_num;
+        }
+
+        var step_num_content = document.querySelectorAll(".step-number-content");
+
+        function contentchange() {
+            step_num_content.forEach(function(content) {
+                content.classList.remove('active');
+                content.classList.add('d-none');
+            });
+            step_num_content[formnumber].classList.add('active');
+        }
+
+
+        function validateform() {
+            validate = true;
+            var validate_inputs = document.querySelectorAll(".main.active input");
+            validate_inputs.forEach(function(vaildate_input) {
+                vaildate_input.classList.remove('warning');
+                if (vaildate_input.hasAttribute('require')) {
+                    if (vaildate_input.value.length == 0) {
+                        validate = false;
+                        vaildate_input.classList.add('warning');
+                    }
+                }
+            });
+            return validate;
+
+        }
+    </script>
 </body>
 
 </html>
