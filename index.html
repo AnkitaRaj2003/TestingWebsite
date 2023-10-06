@@ -24,7 +24,7 @@
         }
 
         .container1 .card {
-            height: 600px;
+            height: 550px;
             width: 1000px;
             background-color: transparent;
             position: relative;
@@ -204,7 +204,7 @@
 
 
 
-        input[type="text"] {
+        input {
             width: 100%;
             height: 40px;
             border: none;
@@ -601,36 +601,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="input-text">
-                            <div class="input-div">
-                                <select>
-                                    <option>Select Category</option>
-                                    <option>India</option>
-                                    <option>France</option>
-                                    <option>UK</option>
-                                    <option>USA</option>
-                                    <option>Germany</option>
-                                    <option>Russia</option>
-                                    <option>China</option>
-                                    <option>Japan</option>
-                                    <option>Pakistan</option>
-                                </select>
-                            </div>
-                            <div class="input-div">
-                                <select>
-                                    <option>Select District</option>
-                                    <option>New Delhi</option>
-                                    <option>Paris</option>
-                                    <option>London</option>
-                                    <option>Washington D.C.</option>
-                                    <option>Berlin</option>
-                                    <option>Moscow</option>
-                                    <option>Bejing</option>
-                                    <option>Tokyo</option>
-                                    <option>Islamabad</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="buttons">
                             <button class="next_button">Next Step</button>
                         </div>
@@ -643,35 +613,52 @@
                         </div>
                         <div class="input-text">
                             <div class="input-div">
-                                <input type="text" required require>
-                                <span>School Name</span>
+                                <input type="text" name="state" id="state" readonly value="Chattishgarh">
+                                <!-- <span>State</span> -->
                             </div>
                             <div class="input-div">
                                 <input type="text" required>
-                                <span>Board Name</span>
+                                <span>Google Location</span>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-div">
-                                <input type="text" required require>
-                                <span>College/University name</span>
+                                <select name="unit" required id="unit">
+                                    <option value="">Area In</option>
+                                    <option value="sqft">Sq ft</option>
+                                    <option value="acre">Acre</option>
+                                    <option value="dismil">Dismil</option>
+                                </select>
+                            </div>
+                            <div class="input-div">
+                                <input type="number" required>
+                                <span>Land Size</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="number" required name="front_of_land">
+                                <span>Front of Land</span>
+                            </div>
+                            <div class="input-div">
+                                <select required>
+                                    <option value="" selected>Land Type</option>
+                                    <option value="on_damar_road">On Damar Road</option>
+                                    <option value="on_dharsa_road">On Dharsa Road</option>
+                                    <option value="no_road">No Road</option>
+                                </select>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-div">
                                 <select>
-                                    <option>Select Course</option>
-                                    <option>BCA</option>
-                                    <option>B-TECH</option>
-                                    <option>BA</option>
-                                    <option>B-COM</option>
-                                    <option>B-SC</option>
-                                    <option>MBA</option>
-                                    <option>MCA</option>
-                                    <option>M-COM</option>
-                                    <option>M-TECH</option>
+                                    <option value="" selected>Diversion</option>
+                                    <option value="possible">Possible</option>
+                                    <option value="not_possible">Not Possible</option>
+                                    <option value="dont_know">Don't Know</option>
                                 </select>
                             </div>
+                            <div class="input-div"></div>
                         </div>
                         <div class="buttons button_space">
                             <button class="back_button">Back</button>
@@ -686,33 +673,32 @@
                         </div>
                         <div class="input-text">
                             <div class="input-div">
-                                <input type="text" required require>
-                                <span>Experience 1</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>Position</span>
+                                <input type="text" name="des" maxlength="250">
+                                <span>Description(Max. 250 Words)</span>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-div">
-                                <input type="text" required>
-                                <span>Experience 2</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required>
-                                <span>Position</span>
+                                <input type="file" name="registry">
+                                <span>Regisrey Paper(B1,Map,Naksha Khasra)</span>
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-div">
-                                <input type="text" required>
-                                <span>Experience 3</span>
+                                <input type="file" name="photo1">
+                                <span>Photo 1</span>
                             </div>
                             <div class="input-div">
-                                <input type="text" required>
-                                <span>Position</span>
+                                <input type="file" name="photo1">
+                                <span>Photo 1</span>
                             </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="file" name="photo1">
+                                <span>Photo 1</span>
+                            </div>
+                            <div class="input-div"></div>
                         </div>
                         <div class="buttons button_space">
                             <button class="back_button">Back</button>
